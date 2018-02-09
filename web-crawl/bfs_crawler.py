@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import time
 import requests
+import re
 
 class Queue:
     def __init__(self):
@@ -29,56 +30,62 @@ class Stack:
         return len(self.queue) == 0
 
 seed_link = 'https://en.wikipedia.org/wiki/Solar_eclipse'
-next_depth_links = []
-frontier = Queue()
+next_depth_links = set([])
+bfs_frontier = Queue()
 bfs_crawled_links = set([])
+call = 0
 
 def bfs_web_crawl(parent_url):
-    global next_depth_links, bfs_crawled_links
+    global next_depth_links, bfs_crawled_links, call
+    call += 1
     wiki_prefix = 'https://en.wikipedia.org'
+    time.sleep(1)   # politeness policy for crawler
     seed = requests.get(parent_url).text
-    time.sleep(1)
-    soup = BeautifulSoup(seed, 'html.parser')
-    anchor = soup.find_all('a', href = True)
-    count = 1
+    soup = BeautifulSoup(seed, 'html.parser').find('div', {'id' : 'mw-content-text'})   # getting all content text only
+    anchor = soup.find_all('a', {'href' : re.compile("^/wiki")})    # getting only wiki links
     for a in anchor:
         link = a.get('href')
         url_filter = ':' not in str(link) and '#' not in str(link) and 'Main_Page' not in str(link)
         if url_filter:
             link = wiki_prefix + link
             bfs_crawled_links.add(str(link))
-            next_depth_links.append(link)
+            next_depth_links.add(str(link))
         if len(bfs_crawled_links) >= 1000:
             break
+    #print("For Call: ",call," With Root: ",parent_url," Num of Links: ",len(bfs_crawled_links))
 
 def bfs_round(seed_url):
-    global next_depth_links, bfs_crawled_links, frontier
+    global next_depth_links, bfs_crawled_links, bfs_frontier
     current_depth = 1
-    frontier.push(seed_url)
+    bfs_frontier.push(seed_url)
     while current_depth < 7:
-        to_crawl = frontier.pop()
+        to_crawl = bfs_frontier.pop()
         bfs_web_crawl(to_crawl)
-        if frontier.is_empty():
+        if bfs_frontier.is_empty():
             current_depth += 1
-            frontier.queue = next_depth_links
-            next_depth_links = []
+            bfs_frontier.queue = list(next_depth_links)
+            next_depth_links = set([])
         if len(bfs_crawled_links) >= 1000:
             #print_links(current_depth)
-            write_bfs_links(current_depth)
+            write_links(bfs_crawled_links, current_depth)
             break
 
 
-def write_bfs_links(depth_reached):
+def write_links(link_list, depth_reached):
     with open('bfs_crawled_links.txt', 'w') as outfile:
-        for link in bfs_crawled_links:
+        for link in link_list:
             outfile.write("%s\n" %link)
-        outfile.write("Depth Crawled: %d" %depth_reached)
+        if len(next_depth_links) != 0:
+            depth_reached += 1
+        outfile.write("Depth Explored: %d" %depth_reached)
 
 def print_links(depth_reached):
     global bfs_crawled_links
     for link in bfs_crawled_links:
         print(str(link))
-    print("Depth Crawled: ",depth_reached)
+    if len(next_depth_links) != 0:
+        depth_reached += 1
+    print("Depth Explored: ",depth_reached)
     print("Number of Links Crawled: ",len(bfs_crawled_links))
 
 bfs_round('https://en.wikipedia.org/wiki/Solar_eclipse')
