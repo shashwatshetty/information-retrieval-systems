@@ -18,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="bfs_crawler.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="bfs_crawler.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web-crawl/bfs_crawler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="61" column="30" lean-forward="true" selection-start-line="61" selection-start-column="30" selection-end-line="61" selection-end-column="30" />
+            <state relative-caret-position="168">
+              <caret line="50" column="42" lean-forward="true" selection-start-line="50" selection-start-column="42" selection-end-line="50" selection-end-column="42" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -30,10 +30,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bfs_crawled_links.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="bfs_crawled_links.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web-crawl/bfs_crawled_links.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-20568">
+            <state relative-caret-position="-20518">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -247,21 +247,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-crawl/bfs_crawler.py">
+    <entry file="file://$PROJECT_DIR$/web-crawl/bfs_crawled_links.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="61" column="30" lean-forward="true" selection-start-line="61" selection-start-column="30" selection-end-line="61" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-20518">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-crawl/bfs_crawled_links.txt">
+    <entry file="file://$PROJECT_DIR$/web-crawl/bfs_crawler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-20568">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="168">
+          <caret line="50" column="42" lean-forward="true" selection-start-line="50" selection-start-column="42" selection-end-line="50" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
