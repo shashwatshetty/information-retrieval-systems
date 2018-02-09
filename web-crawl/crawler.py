@@ -10,7 +10,7 @@ class Queue:
         self.queue.insert(0, element)
 
     def pop(self):
-        self.queue.pop()
+        return self.queue.pop()
 
     def is_empty(self):
         return len(self.queue) == 0
@@ -23,7 +23,7 @@ class Stack:
         self.stack.append(element)
 
     def pop(self):
-        self.stack.pop()
+        return self.stack.pop()
 
     def is_empty(self):
         return len(self.queue) == 0
@@ -37,7 +37,7 @@ def bfs_web_crawl(parent_url):
     global next_depth_links, bfs_crawled_links
     wiki_prefix = 'https://en.wikipedia.org'
     seed = requests.get(parent_url).text
-    #time.sleep(1)
+    time.sleep(1)
     soup = BeautifulSoup(seed, 'html.parser')
     anchor = soup.find_all('a', href = True)
     count = 1
@@ -67,7 +67,7 @@ def bfs_round(seed_url):
             break
 
 
-def write_links(depth_reached):
+def write_bfs_links(depth_reached):
     with open('bfs_crawled_links.txt', 'w') as outfile:
         for link in bfs_crawled_links:
             outfile.write("%s\n" %link)
@@ -78,5 +78,6 @@ def print_links(depth_reached):
     for link in bfs_crawled_links:
         print(str(link))
     print("Depth Crawled: ",depth_reached)
+    print("Number of Links Crawled: ",len(bfs_crawled_links))
 
-bfs_round(seed_link)
+bfs_round('https://en.wikipedia.org/wiki/Solar_eclipse')
