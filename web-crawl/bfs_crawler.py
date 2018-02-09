@@ -63,7 +63,8 @@ def bfs_round(seed_url):
             frontier.queue = next_depth_links
             next_depth_links = []
         if len(bfs_crawled_links) >= 1000:
-            print_links(current_depth)
+            #print_links(current_depth)
+            write_bfs_links(current_depth)
             break
 
 
