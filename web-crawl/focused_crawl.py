@@ -16,15 +16,14 @@ class Queue:
     def is_empty(self):
         return len(self.queue) == 0
 
-seed_link = 'https://en.wikipedia.org/wiki/Solar_eclipse'
 max_crawl_depth = 6
 bfs_frontier = Queue()
 bfs_crawled_links = set([])
 
-def focussed_web_crawl(keywords, parent_url, unique_set = set([])):
+def focused_web_crawl(keywords, parent_url, unique_set = set([])):
     links_explored = set([])
     wiki_prefix = 'https://en.wikipedia.org'
-    #time.sleep(1)   # politeness policy for crawler
+    time.sleep(1)   # politeness policy for crawler
     seed = requests.get(parent_url).text
     soup = BeautifulSoup(seed, 'html.parser').find('div', {'id' : 'mw-content-text'})   # getting all content text only
     anchor = soup.find_all('a', {'href' : re.compile("^/wiki")})    # getting only wiki links
@@ -41,23 +40,23 @@ def focussed_web_crawl(keywords, parent_url, unique_set = set([])):
     #print("With Root: ",parent_url," Num of Links: ",len(bfs_crawled_links))
     return list(links_explored)
 
-def bfs_focussed(seed_url, keywords):
+def bfs_focused(seed_url, keywords):
     global bfs_crawled_links, bfs_frontier
     current_depth = 1
     bfs_frontier.push(seed_url)
     next_depth_links = []
     while current_depth < 7:
-        print("Unique Links: ",len(bfs_crawled_links))
+        #print("Unique Links: ",len(bfs_crawled_links))
         to_crawl = bfs_frontier.pop()
-        next_depth_links += focussed_web_crawl(keywords, to_crawl, bfs_crawled_links)
+        next_depth_links += focused_web_crawl(keywords, to_crawl, bfs_crawled_links)
         if bfs_frontier.is_empty():
             current_depth += 1
             bfs_frontier.queue = list(next_depth_links)
             next_depth_links = []
         if len(bfs_crawled_links) >= 1000:
-            file_name = 'bfs_crawled_links.txt'
+            file_name = 'focused_crawled_links.txt'
             #print_links(bfs_crawled_links, current_depth)
-            #write_links(bfs_crawled_links, current_depth, filename)
+            write_links(bfs_crawled_links, current_depth, file_name)
             break
 
 def is_relevant_link(keywords, link):
@@ -80,4 +79,16 @@ def print_links(link_list, depth_reached):
     print("Depth Crawled: ",depth_reached)
     print("Number of Links Crawled: ",len(link_list))
 
-bfs_focussed(seed_link, ['lunar', 'Moon'])
+def main():
+    num_keywords = int(input("Enter Number of Keywords\n"))
+    count = 0
+    keywords = []
+    while count < num_keywords:
+        word = input("Enter A Keyword\n")
+        keywords.append(word)
+        count += 1
+    seed_link = 'https://en.wikipedia.org/wiki/Solar_eclipse'
+    bfs_focused(seed_link, keywords)
+
+if __name__ == '__main__':
+    main()
