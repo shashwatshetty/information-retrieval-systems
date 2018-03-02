@@ -9,8 +9,8 @@ bfs_out_links = {}
 dfs_in_links = {}
 dfs_out_links = {}
 
-def get_crawled_links(filename, crawled_links):
-    with open(filename, 'r') as file:
+def get_crawled_links(file_name, crawled_links):
+    with open(file_name, 'r') as file:
         line = file.readlines()
     crawled_links.extend([l.strip() for l in line])
 
@@ -51,13 +51,14 @@ def write_graph(graph_links, file_name):
 # main method
 def main():
     get_crawled_links('bfs_crawled_links.txt', bfs_crawled_links)
-    get_crawled_links('dfs_crawled_links.txt', dfs_crawled_links)
     get_links(bfs_crawled_links, bfs_in_links, bfs_out_links)
-    get_links(dfs_crawled_links, dfs_in_links, dfs_out_links)
-    write_graph(bfs_in_links, 'bfs_outlinks_graph.txt')
     write_graph(bfs_in_links, 'bfs_inlinks_graph.txt')
-    write_graph(dfs_in_links, 'dfs_outlinks_graph.txt')
-    write_graph(dfs_out_links, 'dfs_inlinks_graph.txt')
+    write_graph(bfs_out_links, 'bfs_outlinks_graph.txt')
+
+    get_crawled_links('dfs_crawled_links.txt', dfs_crawled_links)
+    get_links(dfs_crawled_links, dfs_in_links, dfs_out_links)
+    write_graph(dfs_in_links, 'dfs_inlinks_graph.txt')
+    write_graph(dfs_out_links, 'dfs_outlinks_graph.txt')
 
 if __name__ == '__main__':
     main()
