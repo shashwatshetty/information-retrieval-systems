@@ -33,10 +33,10 @@ dfs_crawled_links = set([])  # unique links got by DFS crawling
     Given: a url and an optional set to store all the links
     Returns: list of all urls that are outlinks in the given url
 '''
-def web_crawl(parent_url, unique_set = set([])):
+def web_crawl(parent_url):
     links_explored = set([])                                                            # set of links contained in the given url
     wiki_prefix = 'https://en.wikipedia.org'                                            # wikipedia prefix for all sub links
-    time.sleep(1)                                                                       # politeness policy for crawler
+    #time.sleep(1)                                                                       # politeness policy for crawler
     seed = requests.get(parent_url).text
     soup = BeautifulSoup(seed, 'html.parser').find('div', {'id' : 'mw-content-text'})   # getting all content text only
     anchor = soup.find_all('a', {'href' : re.compile("^/wiki")})                        # getting only wiki links
@@ -45,11 +45,8 @@ def web_crawl(parent_url, unique_set = set([])):
         url_filter = ':' not in str(link) and '#' not in str(link) and 'Main_Page' not in str(link)
         if url_filter:
             link = wiki_prefix + link                      # add prefix to links
-            unique_set.add(str(link))                      # stored in set, so no duplicates will be there
             links_explored.add(str(link))
-        if len(unique_set) >= 1000:                        # stop when 1000 unique links found
-            break
-#    print("With Root: ",parent_url," Num of Links: ",len(bfs_crawled_links))
+    #print("With Root: ",parent_url," Num of Links: ",len(bfs_crawled_links))
     return list(links_explored)
 
 '''
@@ -64,7 +61,9 @@ def bfs_round(seed_url):
     next_depth_links = []                                               # links that belong to the lower depth
     while current_depth <= max_crawl_depth:
         to_crawl = bfs_frontier.pop()
-        next_depth_links += web_crawl(to_crawl, bfs_crawled_links)
+        if to_crawl not in bfs_crawled_links:                           # checks unique links to crawl
+            next_depth_links += web_crawl(to_crawl)
+            bfs_crawled_links.add(to_crawl)                             # adds only crawled links to unique set
         if bfs_frontier.is_empty():                                     # when all links in current depth are crawled
             current_depth += 1
             bfs_frontier.queue = list(next_depth_links)                 # add the next depth links in the frontier
@@ -134,7 +133,7 @@ def print_links(link_list, depth_reached):
 def main():
     seed_link = 'https://en.wikipedia.org/wiki/Solar_eclipse'
     bfs_round(seed_link)
-    dfs_round(seed_link, 1)
+    #dfs_round(seed_link, 1)
 
 if __name__ == '__main__':
     main()
