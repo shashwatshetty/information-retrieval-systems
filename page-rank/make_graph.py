@@ -18,7 +18,6 @@ def get_inlinks_outlinks(url, crawled_links, in_links, out_links):
     wiki_prefix = 'https://en.wikipedia.org'
     url_href = str(url).split('/wiki/')[-1]
     out_links[url_href] = []
-    in_links[url_href] = []
     page = requests.get(url).text
     soup = BeautifulSoup(page, 'html.parser').find('div', {'id': 'mw-content-text'})
     anchor = soup.find_all('a', {'href': re.compile("^/wiki")})
@@ -46,17 +45,19 @@ def write_graph(graph_links, file_name):
         for key in graph_links:
             outfile.write("%s" %key)
             for link in graph_links[key]:
-                outfile.write(" %s" %link)
+                outfile.write("\t%s" %link)
             outfile.write("\n")
 
 # main method
 def main():
-    #get_crawled_links('bfs_crawled_links.txt', bfs_crawled_links)
+    get_crawled_links('bfs_crawled_links.txt', bfs_crawled_links)
     get_crawled_links('dfs_crawled_links.txt', dfs_crawled_links)
-    #get_links(bfs_crawled_links, bfs_in_links, bfs_out_links)
+    get_links(bfs_crawled_links, bfs_in_links, bfs_out_links)
     get_links(dfs_crawled_links, dfs_in_links, dfs_out_links)
-    #write_graph(dfs_in_links, 'dfs_outlinks_graph.txt')
-    #write_graph(dfs_in_links, 'dfs_inlinks_graph.txt')
+    write_graph(bfs_in_links, 'bfs_outlinks_graph.txt')
+    write_graph(bfs_in_links, 'bfs_inlinks_graph.txt')
+    write_graph(dfs_in_links, 'dfs_outlinks_graph.txt')
+    write_graph(dfs_out_links, 'dfs_inlinks_graph.txt')
 
 if __name__ == '__main__':
     main()

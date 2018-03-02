@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ea6670f-cbd6-4bf0-9d3d-0cf03c97b579" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/page-rank/bfs_crawled_links.txt" afterPath="$PROJECT_DIR$/page-rank/bfs_crawled_links.txt" />
       <change beforePath="$PROJECT_DIR$/page-rank/make_graph.py" afterPath="$PROJECT_DIR$/page-rank/make_graph.py" />
-      <change beforePath="$PROJECT_DIR$/web-crawl/wiki_crawler.py" afterPath="$PROJECT_DIR$/web-crawl/wiki_crawler.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,8 +25,8 @@
       <file leaf-file-name="wiki_crawler.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web-crawl/wiki_crawler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="139" column="10" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="139" selection-end-column="10" />
+            <state relative-caret-position="-1155">
+              <caret line="46" column="79" lean-forward="false" selection-start-line="46" selection-start-column="79" selection-end-line="46" selection-end-column="79" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -34,44 +34,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="make_graph.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/page-rank/make_graph.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="48" column="32" lean-forward="false" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dfs_crawled_links.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/page-rank/dfs_crawled_links.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="992" column="60" lean-forward="true" selection-start-line="992" selection-start-column="60" selection-end-line="992" selection-end-column="60" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bfs_inlinks_graph.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/page-rank/bfs_inlinks_graph.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="1" column="1154" lean-forward="false" selection-start-line="1" selection-start-column="998" selection-end-line="1" selection-end-column="1154" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="bfs_crawled_links.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/page-rank/bfs_crawled_links.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="18" column="63" lean-forward="false" selection-start-line="18" selection-start-column="63" selection-end-line="18" selection-end-column="63" />
+            <state relative-caret-position="327">
+              <caret line="994" column="49" lean-forward="false" selection-start-line="994" selection-start-column="49" selection-end-line="994" selection-end-column="49" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="make_graph.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/page-rank/make_graph.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="53" column="4" lean-forward="false" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -110,9 +90,9 @@
         <option value="$PROJECT_DIR$/web-crawl/focused_crawled_links.txt" />
         <option value="$PROJECT_DIR$/web-crawl/dfs_crawled_links.txt" />
         <option value="$PROJECT_DIR$/web-crawl/focused_crawl.py" />
+        <option value="$PROJECT_DIR$/page-rank/dfs_crawled_links.txt" />
         <option value="$PROJECT_DIR$/web-crawl/wiki_crawler.py" />
         <option value="$PROJECT_DIR$/page-rank/bfs_crawled_links.txt" />
-        <option value="$PROJECT_DIR$/page-rank/dfs_crawled_links.txt" />
         <option value="$PROJECT_DIR$/page-rank/make_graph.py" />
       </list>
     </option>
@@ -151,22 +131,12 @@
               <item name="information-retrieval-systems" type="b2602c69:ProjectViewProjectNode" />
               <item name="information-retrieval-systems" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="information-retrieval-systems" type="b2602c69:ProjectViewProjectNode" />
-              <item name="information-retrieval-systems" type="462c0819:PsiDirectoryNode" />
-              <item name="page-rank" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="information-retrieval-systems" type="b2602c69:ProjectViewProjectNode" />
-              <item name="information-retrieval-systems" type="462c0819:PsiDirectoryNode" />
-              <item name="web-crawl" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -297,8 +267,8 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.make_graph" />
-        <item index="1" class="java.lang.String" itemvalue="Python.make_graph" />
-        <item index="2" class="java.lang.String" itemvalue="Python.wiki_crawler" />
+        <item index="1" class="java.lang.String" itemvalue="Python.wiki_crawler" />
+        <item index="2" class="java.lang.String" itemvalue="Python.make_graph" />
         <item index="3" class="java.lang.String" itemvalue="Python.wiki_crawler" />
         <item index="4" class="java.lang.String" itemvalue="Python.wiki_crawler" />
       </list>
@@ -322,17 +292,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18152525" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18421052" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -342,6 +312,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -358,6 +329,50 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/web-crawl/wiki_crawler.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2856">
+          <caret line="139" column="10" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="139" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page-rank/dfs_crawled_links.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20832">
+          <caret line="992" column="60" lean-forward="true" selection-start-line="992" selection-start-column="60" selection-end-line="992" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page-rank/bfs_inlinks_graph.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="1" column="1154" lean-forward="false" selection-start-line="1" selection-start-column="998" selection-end-line="1" selection-end-column="1154" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page-rank/bfs_crawled_links.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="63" lean-forward="false" selection-start-line="18" selection-start-column="63" selection-end-line="18" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page-rank/make_graph.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="966">
+          <caret line="48" column="32" lean-forward="false" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-crawl/wiki_crawler.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="8" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
@@ -370,7 +385,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -388,7 +402,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -446,13 +459,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-crawl/bfs_crawled_links.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="268" column="43" lean-forward="false" selection-start-line="268" selection-start-column="36" selection-end-line="268" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web-crawl/dfs_crawled_links.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
@@ -464,48 +470,63 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="10" column="23" lean-forward="false" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-crawl/bfs_crawled_links.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12672">
+          <caret line="376" column="43" lean-forward="false" selection-start-line="376" selection-start-column="43" selection-end-line="376" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/page-rank/bfs_crawled_links.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="18" column="63" lean-forward="false" selection-start-line="18" selection-start-column="63" selection-end-line="18" selection-end-column="63" />
+        <state relative-caret-position="327">
+          <caret line="994" column="49" lean-forward="false" selection-start-line="994" selection-start-column="49" selection-end-line="994" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-crawl/wiki_crawler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="139" column="10" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="139" selection-end-column="10" />
+        <state relative-caret-position="-1155">
+          <caret line="46" column="79" lean-forward="false" selection-start-line="46" selection-start-column="79" selection-end-line="46" selection-end-column="79" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/page-rank/bfs_inlinks_graph.txt">
+    <entry file="file://$PROJECT_DIR$/page-rank/dfs_crawled_links.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="1" column="1154" lean-forward="false" selection-start-line="1" selection-start-column="998" selection-end-line="1" selection-end-column="1154" />
+        <state relative-caret-position="285">
+          <caret line="992" column="60" lean-forward="false" selection-start-line="992" selection-start-column="60" selection-end-line="992" selection-end-column="60" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/page-rank/dfs_crawled_links.txt">
+    <entry file="file://$PROJECT_DIR$/page-rank/dfs_inlinks_graph.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="992" column="60" lean-forward="true" selection-start-line="992" selection-start-column="60" selection-end-line="992" selection-end-column="60" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page-rank/bfs_inlinks_graph.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="3" column="472" lean-forward="false" selection-start-line="3" selection-start-column="472" selection-end-line="3" selection-end-column="472" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/page-rank/make_graph.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="48" column="32" lean-forward="false" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
+        <state relative-caret-position="215">
+          <caret line="53" column="4" lean-forward="false" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="4" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
