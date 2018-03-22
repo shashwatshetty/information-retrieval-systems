@@ -1,10 +1,10 @@
 from bs4 import BeautifulSoup
-import time
 import requests
 import re
 
 
 # global variables
+FOLDER_NAME = 'downloaded-files/'
 bfs_crawled_links = []
 
 '''
@@ -17,14 +17,13 @@ def get_crawled_links(file_name, crawled_links):
     crawled_links.extend([l.strip() for l in line])                     # strip line of line break and add to list
 
 '''
-    Given: a url and an optional set to store all the links
-    Returns: list of all urls that are outlinks in the given url
+    Given: a url
+    Effect: creates a file with only text content of the url in UTF encoding
 '''
-def web_crawl(parent_url):
+def download_file_content(parent_url):
     seed = requests.get(parent_url).text
     soup = BeautifulSoup(seed, 'html.parser')
-    # print(soup)
-    file_name = str(parent_url.split('/wiki/')[-1]) + ".txt"
+    file_name = FOLDER_NAME + str(parent_url.split('/wiki/')[-1]) + ".txt"
     for anchor in soup("a"):                                        # for loop to remove citations
         refs = str(anchor.get('href'))
         if refs.startswith('#cite'):
@@ -33,19 +32,27 @@ def web_crawl(parent_url):
         tags.extract()
     for content in soup.find_all("div", {"id": "bodyContent"}):     # considering only bodyContents
         text = content.text
-        # print(text)
-        break
+        text = re.sub(r"[^0-9A-Za-z,-\.]"," ", text)                # removes special characters from text
+        text = re.sub(r"(?!\d)[.,-](?!\d)"," ", text, 0)            # retains punctuations in digits only
+        text = re.sub(r'\s+', ' ', text)                            # removes extra spaces
+        text = text.lower()                                         # converts text to lower case
+        file = open(file_name, 'w', encoding='utf-8')
+        file.write(text.strip())                                    # removes extra spaces
+        file.close()
 
-    # soup = BeautifulSoup(seed, 'html.parser').find('div', {'id': 'mw-content-text'})   # getting all content text only
-    # anchor = soup.find_all('a', {'href': re.compile("^/wiki")})                        # getting only wiki links
-    # for a in anchor:
-    #     link = a.get('href')
-    #     url_filter = ':' not in str(link) and '#' not in str(link) and 'Main_Page' not in str(link)
-    #     if url_filter:
-    #         link = wiki_prefix + link                      # add prefix to links
-    #         links_explored.add(str(link))
-    # # print("With Root: ",parent_url," Num of Links: ",len(bfs_crawled_links))
-    # return list(links_explored)
+'''
+    Given: a list of unique urls crawled
+    Effect: downloads the textual content of each link in different files
+'''
+def downloader(crawled_list):
+    for link in crawled_list:               # downloads content for each link
+        download_file_content(link)
 
-get_crawled_links("bfs_crawled_links.txt", bfs_crawled_links)
-web_crawl(bfs_crawled_links[0])
+
+# main method
+def main():
+    get_crawled_links("bfs_crawled_links.txt", bfs_crawled_links)
+
+
+if __name__ == '__main__':
+    main()
