@@ -15,6 +15,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/information_retrieval_systems$crawler.coverage" NAME="crawler Coverage Results" MODIFIED="1518136199353" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web-crawl" />
     <SUITE FILE_PATH="coverage/information_retrieval_systems$make_graph.coverage" NAME="make_graph Coverage Results" MODIFIED="1519971026581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/page-rank" />
+    <SUITE FILE_PATH="coverage/information_retrieval_systems$indexer.coverage" NAME="indexer Coverage Results" MODIFIED="1521692802563" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/inverted-indexer" />
     <SUITE FILE_PATH="coverage/information_retrieval_systems$page_ranker.coverage" NAME="page_ranker Coverage Results" MODIFIED="1520017214331" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/page-rank" />
     <SUITE FILE_PATH="coverage/information_retrieval_systems$bfs_crawler.coverage" NAME="bfs_crawler Coverage Results" MODIFIED="1518216633292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web-crawl" />
     <SUITE FILE_PATH="coverage/information_retrieval_systems$wiki_crawler.coverage" NAME="wiki_crawler Coverage Results" MODIFIED="1519940976651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web-crawl" />
@@ -48,8 +49,20 @@
       <file leaf-file-name="content_downloader.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/inverted-indexer/content_downloader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="26" column="98" lean-forward="true" selection-start-line="26" selection-start-column="98" selection-end-line="26" selection-end-column="98" />
+            <state relative-caret-position="651">
+              <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#29#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="indexer.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/inverted-indexer/indexer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1344">
+              <caret line="6" column="14" lean-forward="false" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -72,8 +85,8 @@
       <file leaf-file-name="make_graph.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/page-rank/make_graph.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="22" />
+            <state relative-caret-position="137">
+              <caret line="19" column="114" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="19" selection-end-column="114" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -100,6 +113,7 @@
       <find>Satur</find>
       <find>Ellipse</find>
       <find>Coronal_mass_ejection</find>
+      <find>beads</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -122,6 +136,7 @@
         <option value="$PROJECT_DIR$/page-rank/make_graph.py" />
         <option value="$PROJECT_DIR$/page-rank/page_ranker.py" />
         <option value="$PROJECT_DIR$/inverted-indexer/content_downloader.py" />
+        <option value="$PROJECT_DIR$/inverted-indexer/indexer.py" />
       </list>
     </option>
   </component>
@@ -164,6 +179,11 @@
               <item name="information-retrieval-systems" type="462c0819:PsiDirectoryNode" />
               <item name="inverted-indexer" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="information-retrieval-systems" type="b2602c69:ProjectViewProjectNode" />
+              <item name="information-retrieval-systems" type="462c0819:PsiDirectoryNode" />
+              <item name="web-crawl" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -198,7 +218,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.content_downloader">
+  <component name="RunManager" selected="Python.indexer">
     <configuration name="content_downloader" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -234,6 +254,25 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/web-crawl/focused_crawl.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="indexer" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/inverted-indexer" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="information-retrieval-systems" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/inverted-indexer/indexer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
@@ -275,27 +314,8 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="wiki_crawler" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/web-crawl" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="information-retrieval-systems" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/web-crawl/wiki_crawler.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.wiki_crawler" />
+      <item index="0" class="java.lang.String" itemvalue="Python.indexer" />
       <item index="1" class="java.lang.String" itemvalue="Python.focused_crawl" />
       <item index="2" class="java.lang.String" itemvalue="Python.make_graph" />
       <item index="3" class="java.lang.String" itemvalue="Python.page_ranker" />
@@ -303,10 +323,10 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.content_downloader" />
-        <item index="1" class="java.lang.String" itemvalue="Python.content_downloader" />
-        <item index="2" class="java.lang.String" itemvalue="Python.content_downloader" />
-        <item index="3" class="java.lang.String" itemvalue="Python.content_downloader" />
+        <item index="0" class="java.lang.String" itemvalue="Python.indexer" />
+        <item index="1" class="java.lang.String" itemvalue="Python.indexer" />
+        <item index="2" class="java.lang.String" itemvalue="Python.indexer" />
+        <item index="3" class="java.lang.String" itemvalue="Python.indexer" />
         <item index="4" class="java.lang.String" itemvalue="Python.content_downloader" />
       </list>
     </recent_temporary>
@@ -388,24 +408,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/page-rank/page_ranker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/page-rank/make_graph.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1239">
-          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="65" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/page-rank/page_ranker.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -557,13 +559,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-crawl/bfs_crawled_links.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12672">
-          <caret line="376" column="43" lean-forward="false" selection-start-line="376" selection-start-column="43" selection-end-line="376" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/page-rank/bfs_crawled_links.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="327">
@@ -691,16 +686,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/page-rank/make_graph.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/inverted-indexer/bfs_crawled_links.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -732,6 +717,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web-crawl/bfs_crawled_links.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9975">
+          <caret line="475" column="45" lean-forward="false" selection-start-line="475" selection-start-column="40" selection-end-line="475" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page-rank/make_graph.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="19" column="114" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="19" selection-end-column="114" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inverted-indexer/uni_test_3.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="3" column="38" lean-forward="false" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web-crawl/wiki_crawler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
@@ -742,10 +753,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/inverted-indexer/indexer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1344">
+          <caret line="6" column="14" lean-forward="false" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/inverted-indexer/content_downloader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="26" column="98" lean-forward="true" selection-start-line="26" selection-start-column="98" selection-end-line="26" selection-end-column="98" />
+        <state relative-caret-position="651">
+          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>

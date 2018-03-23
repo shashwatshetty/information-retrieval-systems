@@ -52,6 +52,7 @@ def downloader(crawled_list):
 # main method
 def main():
     get_crawled_links("bfs_crawled_links.txt", bfs_crawled_links)
+    downloader(bfs_crawled_links)
 
 
 if __name__ == '__main__':
