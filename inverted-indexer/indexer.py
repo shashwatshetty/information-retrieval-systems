@@ -1,10 +1,8 @@
-from bs4 import BeautifulSoup
-import requests
-import re
+import json
 
 # global variables
-FOLDER_NAME = 'downloaded-files/'
-filenames = []
+FOLDER_NAME = 'downloaded-files/'           # location to download the textual files
+filenames = []                              # stores the name of all the files created
 
 
 '''
@@ -70,7 +68,7 @@ def tp_inverted_indexer(file_list, n):
     Given: a set of links, the depth crawled and a file name
     Effect: writes all the links in the set in a .txt file with the given file name.
 '''
-def write_term_frequecies(ttf, file_name):
+def write_term_frequencies(ttf, file_name):
     with open(file_name, 'w', encoding='utf-8') as outfile:
         for t in ttf:
             outfile.write("%s\t->\t" %t)
@@ -79,7 +77,10 @@ def write_term_frequecies(ttf, file_name):
                 outfile.write("%s)\t" % ttf[t][d])
             outfile.write("\n")
 
-
+'''
+Given: a dictionary with inverted index for term positions and a filename
+Effect: writes the 
+'''
 def write_term_positions(ttp, file_name):
     with open(file_name, 'w', encoding='utf-8') as outfile:
         for t in ttp:
@@ -94,6 +95,10 @@ def write_term_positions(ttp, file_name):
                 outfile.write(")\t")
             outfile.write("\n")
 
+def write_to_json(inv_index, filename):
+    writer = open(filename, 'w')
+    json.dump(inv_index, writer)
+    writer.close()
 
 # main method
 def main():
@@ -102,10 +107,18 @@ def main():
     bigram_term_doc_tf = tf_inverted_indexer(filenames, 2)
     trigram_term_doc_tf = tf_inverted_indexer(filenames, 3)
     unigram_term_doc_tp = tp_inverted_indexer(filenames, 1)
-    # write_term_frequecies(unigram_term_doc_tf, "unigram_tf_inverted_index.txt")
-    # write_term_frequecies(bigram_term_doc_tf, "bigram_tf_inverted_index.txt")
-    # write_term_frequecies(trigram_term_doc_tf, "trigram_tf_inverted_index.txt")
+
+    # write to text files
+    write_term_frequencies(unigram_term_doc_tf, "unigram_tf_inverted_index.txt")
+    write_term_frequencies(bigram_term_doc_tf, "bigram_tf_inverted_index.txt")
+    write_term_frequencies(trigram_term_doc_tf, "trigram_tf_inverted_index.txt")
     write_term_positions(unigram_term_doc_tp, "unigram_tp_inverted_index.txt")
+
+    # write to json files
+    write_to_json(unigram_term_doc_tf, "unigram_tf_inverted_index.json")
+    write_to_json(bigram_term_doc_tf, "bigram_tf_inverted_index.json")
+    write_to_json(trigram_term_doc_tf, "trigram_tf_inverted_index.json")
+    write_to_json(unigram_term_doc_tp, "unigram_tp_inverted_index.json")
 
 if __name__ == '__main__':
     main()
