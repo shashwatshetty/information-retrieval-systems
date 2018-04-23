@@ -1,9 +1,11 @@
 import json
 import re
+import operator
 
 queries = {}
 stop_list = []
 top_100 = {}
+unigram_tf_table = {}
 CORPUS_LOCATION = "D:/Codes/Practise Code/information-retrieval-systems/cacm-retriever/cleaned-cacm-corpus/"
 
 '''
@@ -11,16 +13,15 @@ CORPUS_LOCATION = "D:/Codes/Practise Code/information-retrieval-systems/cacm-ret
     Effect: populates the dictionary with the data in the json file
 '''
 def read_from_json(file_name):
-    global queries
     reader = open(file_name, 'r')
-    queries = json.load(reader)
+    table = json.load(reader)
     reader.close()
+    return table
 
 
-def get_stop_words(file_name):
-    global stop_list
-    file = open(file_name, 'r+')
-    stop_list = [l.strip() for l in file.readlines()]
+def get_stop_words(tf_list):
+    for k, v in tf_list[:16]:
+        stop_list.append(k)
 
 '''
     Given: a text filename and a dictionary
@@ -37,7 +38,6 @@ def read_top_100(filename, table):
             table[q].append(d)
         else:
             table[q] = [d]
-
 
 '''
     Given: a list of terms and an integer n
@@ -110,8 +110,10 @@ def write_snippet():
 
 
 def main():
-    get_stop_words("stop_words.txt")
-    read_from_json("queries.json")
+    global queries, unigram_tf_table
+    queries = read_from_json("queries.json")
+    unigram_tf_table = read_from_json("unigrams_tf.json")
+    get_stop_words(unigram_tf_table)
     read_top_100("bm25_t100_sample.txt", top_100)
     write_snippet()
 
