@@ -19,8 +19,9 @@ def read_from_json(file_name):
     return table
 
 
-def get_stop_words(tf_list):
-    for k, v in tf_list[:16]:
+def get_stop_words(table):
+    tf_list = sorted(table.items(), key=operator.itemgetter(1), reverse=True)
+    for k, v in tf_list[:11]:
         stop_list.append(k)
 
 '''
@@ -28,8 +29,8 @@ def get_stop_words(tf_list):
     Effect: populates the dictionary with the query to document list mapping
 '''
 def read_top_100(filename, table):
-    f = open(filename, 'r+')
-    lines = [l.strip() for l in f.readlines()]
+    file = open(filename, 'r+')
+    lines = [l.strip() for l in file.readlines()]
     for line in lines:
         terms = line.split(" ")
         q = terms[0]
@@ -114,7 +115,7 @@ def main():
     queries = read_from_json("queries.json")
     unigram_tf_table = read_from_json("unigrams_tf.json")
     get_stop_words(unigram_tf_table)
-    read_top_100("bm25_t100_sample.txt", top_100)
+    read_top_100("lucene_baseline.txt", top_100)
     write_snippet()
 
 
