@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ea6670f-cbd6-4bf0-9d3d-0cf03c97b579" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cacm-retriever/phase-2/snippet_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/cacm-retriever/phase-2/snippet_generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cacm-retriever/phase-3/query_evaluator.py" beforeDir="false" afterPath="$PROJECT_DIR$/cacm-retriever/phase-3/query_evaluator.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,14 +37,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="snippet_generator.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="snippet_generator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cacm-retriever/phase-2/snippet_generator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="145" column="90" selection-start-line="145" selection-start-column="90" selection-end-line="145" selection-end-column="90" />
+            <state relative-caret-position="365">
+              <caret line="123" selection-start-line="120" selection-end-line="123" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="query_evaluator.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cacm-retriever/phase-3/query_evaluator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="433">
+              <caret line="175" column="86" selection-start-line="175" selection-start-column="86" selection-end-line="175" selection-end-column="86" />
             </state>
           </provider>
         </entry>
@@ -114,8 +122,8 @@
         <option value="$PROJECT_DIR$/cacm-retriever/snippet_generator.py" />
         <option value="$PROJECT_DIR$/cacm-retriever/query_evaluator.py" />
         <option value="$PROJECT_DIR$/cacm-retriever/phase-3/tfidf_evaluation.txt" />
-        <option value="$PROJECT_DIR$/cacm-retriever/phase-3/query_evaluator.py" />
         <option value="$PROJECT_DIR$/cacm-retriever/phase-2/snippet_generator.py" />
+        <option value="$PROJECT_DIR$/cacm-retriever/phase-3/query_evaluator.py" />
       </list>
     </option>
   </component>
@@ -356,25 +364,26 @@
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2690992" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23825504" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.3295325" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23147154" />
       <window_info anchor="right" id="SciView" order="3" weight="0.32975295" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.24973147" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="11" weight="0.3295325" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3295325" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info id="Structure" order="1" weight="0.24973147" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.2690992" />
+      <window_info anchor="bottom" id="Python Console" order="9" weight="0.3295325" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.3990878" />
       <window_info anchor="right" id="Database" order="4" weight="0.32975295" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3295325" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3990878" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Python Console" order="8" weight="0.3295325" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3295325" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.3295325" />
+      <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -598,20 +607,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cacm-retriever/phase-3/query_evaluator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1496">
-          <caret line="120" column="57" selection-start-line="120" selection-start-column="57" selection-end-line="120" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cacm-retriever/phase-2/snippet_generator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="145" column="90" selection-start-line="145" selection-start-column="90" selection-end-line="145" selection-end-column="90" />
+        <state relative-caret-position="365">
+          <caret line="123" selection-start-line="120" selection-end-line="123" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cacm-retriever/phase-3/query_evaluator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="175" column="86" selection-start-line="175" selection-start-column="86" selection-end-line="175" selection-end-column="86" />
         </state>
       </provider>
     </entry>
