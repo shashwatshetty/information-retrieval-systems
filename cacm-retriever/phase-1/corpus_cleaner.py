@@ -1,121 +1,133 @@
 from bs4 import BeautifulSoup
 import glob
 import re
-from string import maketrans
 from string import punctuation
 import json
+from pathlib import Path
 
-SRC = "/Users/shravanreddy/Downloads/cacm/"
-Query_SRC = "/Users/shravanreddy/Desktop/Phase1-Task1,2/queries.txt"
-Query_DST = "/Users/shravanreddy/Desktop/Phase1-Task1,2/newqueries.json"
-DST = "/Users/shravanreddy/Downloads/ir3/"
-Query_DST_TXT = "/Users/shravanreddy/Desktop/Phase1-Task1,2/newqueries.txt"
+# global variables
+HTML_CORPUS_PATH = Path("D:/Codes/Practise Code/information-retrieval-systems/cacm-retriever/cacm-src")
+TXT_CORPUS_PATH = Path("D:/Codes/Practise Code/information-retrieval-systems/cacm-retriever/cleaned-cacm-corpus/")
+
+QUERY_FILE = "queries.txt"
+QUERY_JSON_FILE = "new_queries.json"
+NEW_QUERY_FILE = "new_queries.txt"
 
 
-def buildCorpus():
+def build_corpus():
+    # get list of all html files in the given source directory
+    corpus_path = str(HTML_CORPUS_PATH / "*.html")
+    cacm_files = glob.glob(corpus_path)
 
-    # get list of all text files in the given source directory
-    fList = glob.glob(SRC + "*.html")
-    print fList
-    for file in fList :
-        openedFile = open(file,"r")
-        line = openedFile.read()
+    for file in cacm_files:
+        opened_file = open(file, "r")
+        line = opened_file.read()
 
-        parsedHtml = BeautifulSoup(line,'html.parser')
+        # parse html using beautiful soup
+        parsed_html = BeautifulSoup(line, 'html.parser')
 
         # ignore all other tags except for the headings and paragraph
-        content_tags = ["pre"];
+        content_tags = ["pre"]
         content = ''
-        for tagContent in parsedHtml.find_all(content_tags):
+        for tagContent in parsed_html.find_all(content_tags):
             content = tagContent.text
-        content = cleaning(content,True)
-        newDocName = file.split("/")
-        newDocName = newDocName[-1].split("html")
-        newDocName = newDocName[0]
-        newDoc = open(DST+newDocName+"txt", 'w+')
-        newDoc.write(content)
-        newDoc.close()
-def buildQueries():
 
+        # clean the content of obtained from the html file
+        content = cleaning(content, True)
+
+        # create txt file names of the cleaned content
+        new_doc_name = file.split("\\")
+        new_doc_name = new_doc_name[-1].split("html")
+        new_doc_name = new_doc_name[0]
+        path = str(TXT_CORPUS_PATH / new_doc_name)
+
+        # write the content to txt files in a different directory
+        new_doc = open(path + "txt", 'w+')
+        new_doc.write(content)
+        new_doc.close()
+
+def build_queries():
     query_dictionary = {}
     content = list()
-    query_file  = open(Query_SRC,"r")
+
+    # reading the query file
+    query_file = open(QUERY_FILE, "r")
     text = query_file.read()
 
-    parsedHtml = BeautifulSoup(text, 'lxml')
+    # parse html using beautiful soup
+    parsed_html = BeautifulSoup(text, 'lxml')
 
     # ignore all other tags except for the headings and paragraph
     content_tags = ["doc"];
-
-    for tagContent in parsedHtml.find_all(content_tags):
+    for tagContent in parsed_html.find_all(content_tags):
         content.append(tagContent.text.strip())
 
-    txt_writer = open(Query_DST_TXT, 'w')
-
+    # writing the cleaned queries in a new txt file
+    txt_writer = open(NEW_QUERY_FILE, 'w')
     for word in content:
-        first = word.split(" ",1)
+        first = word.split(" ", 1)
+        # actual query
         query = first[1]
-        first = first[0].encode("ascii","ignore")
-        first = first.decode("ascii","ignore")
-        cleaned_query = cleaning(query,False)
-        txt_writer.write(str(first)+": "+str(cleaned_query)+"\n")
+        first = first[0].encode("ascii", "ignore")
+        first = first.decode("ascii", "ignore")
+        # cleaning the query
+        cleaned_query = cleaning(query, False)
+        txt_writer.write(str(first) + ": " + str(cleaned_query) + "\n")
         query_dictionary[int(str(first))] = cleaned_query
-
     txt_writer.close()
-    fwriter = open(Query_DST, 'w')
 
-    json.dump(query_dictionary, fwriter)
-    fwriter.close()
+    # write query data to json
+    file_writer = open(QUERY_JSON_FILE, 'w')
+    json.dump(query_dictionary, file_writer)
+    file_writer.close()
 
-
-
-
-def cleaning(content,CorpusFlag):
+def cleaning(content, corpus_flag):
         # convert all text to utf-8
-        ascii_encoded =  content.encode("utf-8","ignore")
-        utf_decoded = ascii_encoded.decode("ascii","ignore")
+        ascii_encoded = content.encode("utf-8", "ignore")
+        utf_decoded = ascii_encoded.decode("ascii", "ignore")
         content = str(utf_decoded)
 
+        # remove apostrophe from terms
+        content = re.sub("'", '', content)
 
-        #  remove apostrophe from terms
-        content = re.sub("'",'', content)
-
-
-        # ignore punctutaions if the puncatiation flag is set to true
-
-        #removing . and , from terms but ,except from in between numbers
-        posLookAhead = "(?<=[^0-9])[.,\']"
-        posLoookbehind = "[.,\'](?=[^0-9])"
-        regex = posLookAhead + "|" + posLoookbehind
+        # ignore punctuations if the punctuation flag is set to true
+        # removing . and , from terms, except from in between numbers
+        pos_look_ahead = "(?<=[^0-9])[.,\']"
+        pos_look_behind = "[.,\'](?=[^0-9])"
+        regex = pos_look_ahead + "|" + pos_look_behind
         content = re.sub(regex, '', content)
 
-        done_list = ["'",".",","]
+        done_list = ["'", ".", ","]
 
         # list containing all punctuations except for the ones checked before
         punctuations = ""
         for char in punctuation:
             if char not in done_list:
                 punctuations += char
+
+        # creating replacement string for the unwanted punctuations
         replacement = ""
-        for each in punctuations:
+        for p in punctuations:
             replacement += " "
 
-        content = content.translate(maketrans(punctuations,replacement))
+        # cleaning unwanted punctuations
+        content = content.translate(str.maketrans(punctuations, replacement))
 
-        #trim spaces
+        # trim spaces
         content = re.sub("\n"," ",content)
-
         content = re.sub('\s\s+', ' ', content)
         content = re.sub('\t', ' ', content)
+        content = content.lower()
 
-
-
-        content=content.lower()
-        if CorpusFlag :
-            content=content.strip('0123456789 ')
+        # stripping numbers and spaces at the beginning and end of the content
+        if corpus_flag:
+            content = content.strip('0123456789 ')
         return content
 
+def main():
+    build_corpus()
+    build_queries()
 
 
-buildCorpus()
-buildQueries()
+if __name__ == '__main__':
+    main()
