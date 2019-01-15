@@ -1,0 +1,8 @@
+Explanation for Task 2:
+	- The crawling technique is similar to the one in Task 1, only we filter the links with the given keywords.
+	- The links are initially filtered to avoid admin, navigation, MainPage and side links.
+	- The list of links recieved from this filter is then checked individually if these links will contain the keywords provided.
+	- Only, if the keywords are present in the links, will they be pushed into the frontier for further crawling.
+	- The only disadvantage of this method is that it will merely only check for the presence of the keyword in the link and not if it is relevent or no.
+	- Also it won't be able to address the issue of Vocabulary Mismatch if the keywords have more than one meaning.
+	- The focused crawling takes longer time and traverses a deeper depth than the general crawl.

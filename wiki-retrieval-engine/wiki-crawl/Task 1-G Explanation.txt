@@ -1,0 +1,7 @@
+Comparing the the results achieved by BFS Order and DFS Order crawling:
+	- In terms of running time, BFS takes less time to crawls as compared to DFS, and is more efficent.
+	- BFS has a narrower coverage of topics that it crawls and is more relevant to the topics presented in the seed url as compared to DFS.
+	- There are 558 links with the keyword 'Solar' and 479 links with the key word 'Eclipse' in the links crawled using BFS
+	- There are 349 links with the keyword 'Solar' and 299 links with the key word 'Eclipse' in the links crawled using DFS
+	- The URL overlap is a lot in DFS as it has to cover many nodes to find unique links as compared to BFS
+	- Overall, BFS has a better quality of links with respect to the topic given in the seed URL.

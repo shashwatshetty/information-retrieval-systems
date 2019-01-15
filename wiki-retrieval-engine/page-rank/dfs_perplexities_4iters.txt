@@ -1,0 +1,4 @@
+Round 0 perplexity: 999.9999999999519
+Round 1 perplexity: 276.08738866058076
+Round 2 perplexity: 132.11521351543993
+Round 3 perplexity: 90.84400475676496
