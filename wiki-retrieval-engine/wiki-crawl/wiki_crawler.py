@@ -4,7 +4,7 @@ import requests
 import collections as col
 import re
 
-# Global variables
+# Constants
 MAX_CRAWL_DEPTH = 6  # max depth to be crawled
 WIKI_PREFIX = 'https://en.wikipedia.org'  # wikipedia prefix for all sub links
 BFS_FILE = 'bfs_crawled_links.txt'
@@ -13,13 +13,15 @@ DFS_FILE = 'dfs_crawled_links.txt'
 dfs_crawled_links = set([])  # unique links got by DFS crawling
 
 
-'''
-    Given: a url and an optional set to store all the links
-    Returns: list of all urls that are outlinks in the given url
-'''
-
-
 def web_crawl(parent_url):
+    """
+    Crawls the given Wikipedia URL by retrieving all the out-links contained in that webpage.
+    Args:
+        parent_url: the Wikipedia URL that needs to be crawled.
+
+    Returns:
+        List of out-links contained by the webpage of the given Wikipedia URL.
+    """
     links_explored = set([])  # set of links contained in the given url
     time.sleep(1)  # politeness policy for crawler
     seed = requests.get(parent_url).text
@@ -35,14 +37,12 @@ def web_crawl(parent_url):
     return list(links_explored)
 
 
-'''
-    Given: the seed url
-    Effect: creates a .txt file which contains 1000 unique links explored in BFS order
-            starting from the given seed url.
-'''
-
-
 def bfs_round(seed_url):
+    """
+    Uses a Breadth First Search algorithm to crawl 1000 Wikipedia links starting from the seed URL.
+    Args:
+        seed_url: the Wikipedia URL where the web crawl starts.
+    """
     bfs_frontier = col.deque()  # bfs queue object
     bfs_crawled_links = set([])  # unique links got by BFS crawling
     current_depth = 1
@@ -102,13 +102,14 @@ def add_all_links(next_depth_links, unique_set):
             unique_set.add(link)
 
 
-'''
-    Given: a set of links, the depth crawled and a file name
-    Effect: writes all the links in the set in a .txt file with the given file name.
-'''
-
-
 def write_links(link_list, depth_reached, file_name):
+    """
+    Creates a .txt file containing 1000 Wikipedia links that have been crawled using either BFS or DFS strategy.
+    Args:
+        link_list:      set of Wikipedia links that have been crawled.
+        depth_reached:  depth of the N-ary tree reached to complete crawling 1000 Wikipedia links.
+        file_name:      name of the .txt file that needs to be created.
+    """
     link_list = sorted(link_list)
     with open(file_name, 'w') as outfile:
         for link in link_list:
@@ -116,13 +117,13 @@ def write_links(link_list, depth_reached, file_name):
         outfile.write("Depth Crawled: %d" % depth_reached)
 
 
-'''
-    Given: a set of links and the depth crawled
-    Effect: prints all the links in the set on the console.
-'''
-
-
 def print_links(link_list, depth_reached):
+    """
+    Prints to the console 1000 Wikipedia links that have been crawled using either BFS or DFS strategy.
+    Args:
+        link_list:      set of Wikipedia links that have been crawled.
+        depth_reached:  depth of the N-ary tree reached to complete crawling 1000 Wikipedia links.
+    """
     for link in link_list:
         print(str(link))
     print("Depth Crawled: ", depth_reached)
