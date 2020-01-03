@@ -10,8 +10,6 @@ WIKI_PREFIX = 'https://en.wikipedia.org'  # wikipedia prefix for all sub links
 BFS_FILE = 'bfs_crawled_links.txt'
 DFS_FILE = 'dfs_crawled_links.txt'
 
-dfs_crawled_links = set([])  # unique links got by DFS crawling
-
 
 def web_crawl(parent_url):
     """
@@ -62,44 +60,25 @@ def bfs_round(seed_url):
             break
 
 
-'''
-    Given: the seed url and depth crawled so far.
-    Effect: creates a .txt file which contains 1000 unique links explored in DFS order
-            starting from the given seed url.
-'''
+def dfs_round(seed_url):
+    dfs_frontier = col.deque()
+    dfs_crawled_links = set([])  # unique links got by DFS crawling
+    current_depth = 1
+    dfs_frontier.append(seed_url)
 
-
-def dfs_round(crawl_link, depth_crawled):
-    global dfs_crawled_links, dfs_frontier
-    if depth_crawled > MAX_CRAWL_DEPTH:  # avoid nodes deeper than 6
-        return
-    dfs_crawled_links.add(crawl_link)
-    if len(dfs_crawled_links) >= 1000:  # stop when 1000 links found
-        # print_links(dfs_crawled_links, depth_crawled)
-        write_links(dfs_crawled_links, MAX_CRAWL_DEPTH, DFS_FILE)  # write the links to file
-        return
-    next_depth_links = web_crawl(crawl_link)  # links that belong to the lower depth
-    # print("Depth: ",depth_crawled)
-    # print("Unique Links: ",len(dfs_crawled_links))
-    if depth_crawled == MAX_CRAWL_DEPTH:  # when we have reached depth 6
-        add_all_links(next_depth_links, dfs_crawled_links)  # add all links below it as explored
-        return
-    for link in next_depth_links:
-        if len(dfs_crawled_links) < 1000:
-            dfs_round(link, depth_crawled + 1)  # recursively call with depth increased by one
-    return
-
-
-'''
-    Given: a list of links and a unique set
-    Effect: adds all the links in the list to the set.
-'''
-
-
-def add_all_links(next_depth_links, unique_set):
-    for link in next_depth_links:
-        if len(unique_set) < 1000:  # stop when 1000 links are in the set
-            unique_set.add(link)
+    next_depth_links = []  # links that belong to the lower depth
+    while current_depth <= MAX_CRAWL_DEPTH:
+        to_crawl = dfs_frontier.pop()
+        if to_crawl not in dfs_crawled_links:
+            next_depth_links += web_crawl(to_crawl)
+            dfs_crawled_links.add(to_crawl)
+        if not dfs_frontier:  # when all links in current depth are crawled
+            current_depth += 1
+            dfs_frontier = col.deque(list(next_depth_links))
+            next_depth_links = []
+        if len(dfs_crawled_links) >= 1000:  # stop when 1000 links found
+            write_links(dfs_crawled_links, current_depth, DFS_FILE)
+            break
 
 
 def write_links(link_list, depth_reached, file_name):
@@ -110,6 +89,7 @@ def write_links(link_list, depth_reached, file_name):
         depth_reached:  depth of the N-ary tree reached to complete crawling 1000 Wikipedia links.
         file_name:      name of the .txt file that needs to be created.
     """
+    print('Writing the crawled links to file ', file_name)
     link_list = sorted(link_list)
     with open(file_name, 'w') as outfile:
         for link in link_list:
@@ -134,7 +114,7 @@ def print_links(link_list, depth_reached):
 def main():
     seed_link = 'https://en.wikipedia.org/wiki/Solar_eclipse'
     bfs_round(seed_link)
-    # dfs_round(seed_link, 1)
+    dfs_round(seed_link)
 
 
 if __name__ == '__main__':
