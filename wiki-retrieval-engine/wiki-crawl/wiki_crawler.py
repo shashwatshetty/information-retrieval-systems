@@ -7,8 +7,8 @@ import re
 # Constants
 MAX_CRAWL_DEPTH = 6  # max depth to be crawled
 WIKI_PREFIX = 'https://en.wikipedia.org'  # wikipedia prefix for all sub links
-BFS_FILE = 'bfs_crawled_links.txt'
-DFS_FILE = 'dfs_crawled_links.txt'
+BFS_FILE = 'bfs_crawled_links.txt'  # file name for BFS crawled links
+DFS_FILE = 'dfs_crawled_links.txt'  # file name for DFS crawled links
 
 
 def web_crawl(parent_url):
@@ -61,11 +61,15 @@ def bfs_round(seed_url):
 
 
 def dfs_round(seed_url):
+    """
+    Uses a Depth First Search algorithm to crawl 1000 Wikipedia links starting from the seed URL.
+    Args:
+        seed_url: the Wikipedia URL where the web crawl starts.
+    """
     dfs_frontier = col.deque()
     dfs_crawled_links = set([])  # unique links got by DFS crawling
     current_depth = 1
     dfs_frontier.append(seed_url)
-
     next_depth_links = []  # links that belong to the lower depth
     while current_depth <= MAX_CRAWL_DEPTH:
         to_crawl = dfs_frontier.pop()
