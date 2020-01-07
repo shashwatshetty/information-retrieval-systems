@@ -9,13 +9,32 @@ MAX_CRAWL_DEPTH = 6  # max depth to be crawled
 WIKI_PREFIX = 'https://en.wikipedia.org'  # wikipedia prefix for all sub links
 BFS_FILE = 'bfs_crawled_links.txt'  # file name for BFS crawled links
 DFS_FILE = 'dfs_crawled_links.txt'  # file name for DFS crawled links
+BFS_FILE_FOCUSED = 'bfs_crawled_links_focused.txt'  # file name for Focused BFS crawled links
+DFS_FILE_FOCUSED = 'dfs_crawled_links_focused.txt'  # file name for Focused DFS crawled links
+
+'''
+    Given: a list of keywords and a link
+    Returns: True iff any of the keywords are a part of the link else returns False
+'''
 
 
-def web_crawl(parent_url):
+def is_relevant_link(keywords, link):
+    if len(keywords) == 0:  # when no keywords are given, all links are relevant
+        return True
+    check = link.lower()  # make the link lower case
+    res = False
+    for word in keywords:
+        word_check = word.lower()  # make the keyword lower case
+        res = res or (word_check in check)  # comparison will ignore cases
+    return res
+
+
+def web_crawl(parent_url, keywords):
     """
     Crawls the given Wikipedia URL by retrieving all the out-links contained in that webpage.
     Args:
         parent_url: the Wikipedia URL that needs to be crawled.
+        keywords:   list of keywords for which the crawler will look for specifically in the webpage.
 
     Returns:
         List of out-links contained by the webpage of the given Wikipedia URL.
@@ -26,21 +45,24 @@ def web_crawl(parent_url):
     soup = BeautifulSoup(seed, 'html.parser').find('div', {'id': 'mw-content-text'})  # getting all content text only
     anchor = soup.find_all('a', {'href': re.compile("^/wiki")})  # getting only wiki links
     for a in anchor:
-        link = a.get('href')
-        url_filter = ':' not in str(link) and '#' not in str(link) and 'Main_Page' not in str(link)
-        if url_filter:
-            link = WIKI_PREFIX + link  # add prefix to links
-            links_explored.add(str(link))
-    # print("With Root: ",parent_url," Num of Links: ",len(bfs_crawled_links))
+        if is_relevant_link(keywords, str(a)):
+            link = a.get('href')
+            url_filter = ':' not in str(link) and '#' not in str(link) and 'Main_Page' not in str(link)
+            if url_filter:
+                link = WIKI_PREFIX + link  # add prefix to links
+                links_explored.add(str(link))
     return list(links_explored)
 
 
-def bfs_round(seed_url):
+def bfs_round(seed_url, keywords=[]):
     """
     Uses a Breadth First Search algorithm to crawl 1000 Wikipedia links starting from the seed URL.
     Args:
         seed_url: the Wikipedia URL where the web crawl starts.
+        keywords: list of keywords for which the crawler will look for specifically in the webpage,
+                  empty by default.
     """
+    file_name = BFS_FILE
     bfs_frontier = col.deque()  # bfs queue object
     bfs_crawled_links = set([])  # unique links got by BFS crawling
     current_depth = 1
@@ -49,23 +71,29 @@ def bfs_round(seed_url):
     while current_depth <= MAX_CRAWL_DEPTH:
         to_crawl = bfs_frontier.popleft()
         if to_crawl not in bfs_crawled_links:
-            next_depth_links += web_crawl(to_crawl)
+            next_depth_links += web_crawl(to_crawl, keywords)
             bfs_crawled_links.add(to_crawl)
         if not bfs_frontier:  # when all links in current depth are crawled
             current_depth += 1
             bfs_frontier = col.deque(list(next_depth_links))
             next_depth_links = []
-        if len(bfs_crawled_links) >= 1000:  # stop when 1000 links found
-            write_links(bfs_crawled_links, current_depth, BFS_FILE)
+        print('Links Crawled', len(bfs_crawled_links))
+        if len(bfs_crawled_links) >= 10:  # stop when 1000 links found
+            if len(keywords) > 0:
+                file_name = BFS_FILE_FOCUSED
+            write_links(bfs_crawled_links, current_depth, file_name)
             break
 
 
-def dfs_round(seed_url):
+def dfs_round(seed_url, keywords=[]):
     """
     Uses a Depth First Search algorithm to crawl 1000 Wikipedia links starting from the seed URL.
     Args:
         seed_url: the Wikipedia URL where the web crawl starts.
+        keywords: list of keywords for which the crawler will look for specifically in the webpage,
+                  empty by default.
     """
+    file_name = DFS_FILE
     dfs_frontier = col.deque()
     dfs_crawled_links = set([])  # unique links got by DFS crawling
     current_depth = 1
@@ -74,14 +102,17 @@ def dfs_round(seed_url):
     while current_depth <= MAX_CRAWL_DEPTH:
         to_crawl = dfs_frontier.pop()
         if to_crawl not in dfs_crawled_links:
-            next_depth_links += web_crawl(to_crawl)
+            next_depth_links += web_crawl(to_crawl, keywords)
             dfs_crawled_links.add(to_crawl)
         if not dfs_frontier:  # when all links in current depth are crawled
             current_depth += 1
             dfs_frontier = col.deque(list(next_depth_links))
             next_depth_links = []
-        if len(dfs_crawled_links) >= 1000:  # stop when 1000 links found
-            write_links(dfs_crawled_links, current_depth, DFS_FILE)
+        print('Links Crawled', len(dfs_crawled_links))
+        if len(dfs_crawled_links) >= 10:  # stop when 1000 links found
+            if len(keywords) > 0:
+                file_name = DFS_FILE_FOCUSED
+            write_links(dfs_crawled_links, current_depth, file_name)
             break
 
 
@@ -112,7 +143,6 @@ def print_links(link_list, depth_reached):
         print(str(link))
     print("Depth Crawled: ", depth_reached)
     print("Number of Links Crawled: ", len(link_list))
-
 
 # main method
 def main():
