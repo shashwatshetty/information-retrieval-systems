@@ -12,13 +12,17 @@ DFS_FILE = 'dfs_crawled_links.txt'  # file name for DFS crawled links
 BFS_FILE_FOCUSED = 'bfs_crawled_links_focused.txt'  # file name for Focused BFS crawled links
 DFS_FILE_FOCUSED = 'dfs_crawled_links_focused.txt'  # file name for Focused DFS crawled links
 
-'''
-    Given: a list of keywords and a link
-    Returns: True iff any of the keywords are a part of the link else returns False
-'''
-
 
 def is_relevant_link(keywords, link):
+    """
+    Checks if the link contains to the keywords provided by the user.
+    Args:
+        keywords: list of keywords for which the crawler will look for specifically in the webpage.
+        link:     the Wikipedia URL that needs to be crawled.
+
+    Returns:
+        True iff no keywords are provided or any of the keywords are a part of the link else returns False.
+    """
     if len(keywords) == 0:  # when no keywords are given, all links are relevant
         return True
     check = link.lower()  # make the link lower case
@@ -78,7 +82,7 @@ def bfs_round(seed_url, keywords=[]):
             bfs_frontier = col.deque(list(next_depth_links))
             next_depth_links = []
         print('Links Crawled', len(bfs_crawled_links))
-        if len(bfs_crawled_links) >= 10:  # stop when 1000 links found
+        if len(bfs_crawled_links) >= 1000:  # stop when 1000 links found
             if len(keywords) > 0:
                 file_name = BFS_FILE_FOCUSED
             write_links(bfs_crawled_links, current_depth, file_name)
@@ -109,7 +113,7 @@ def dfs_round(seed_url, keywords=[]):
             dfs_frontier = col.deque(list(next_depth_links))
             next_depth_links = []
         print('Links Crawled', len(dfs_crawled_links))
-        if len(dfs_crawled_links) >= 10:  # stop when 1000 links found
+        if len(dfs_crawled_links) >= 1000:  # stop when 1000 links found
             if len(keywords) > 0:
                 file_name = DFS_FILE_FOCUSED
             write_links(dfs_crawled_links, current_depth, file_name)
